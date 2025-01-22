@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bt6ykv1wpa2dv"]
+[gd_scene load_steps=3 format=3 uid="uid://bt6ykv1wpa2dv"]
 
 [ext_resource type="PackedScene" uid="uid://8efwgxdpe0vr" path="res://player.tscn" id="1_gayhf"]
+[ext_resource type="Script" path="res://dogs_manager.gd" id="2_lrd6m"]
 
 [node name="root" type="Node2D"]
 
@@ -9,5 +10,6 @@
 [node name="background" type="Sprite2D" parent="."]
 
 [node name="dogs" type="Node2D" parent="."]
+script = ExtResource("2_lrd6m")
 
 [node name="house" type="Node2D" parent="."]

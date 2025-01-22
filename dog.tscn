@@ -55,10 +55,10 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(80, 80)
 script = ExtResource("1_4dp7p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(160, 160)
-scale = Vector2(10, 10)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_m1mtx")
 animation = &"idle_white"
