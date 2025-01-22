@@ -43,6 +43,7 @@ animations = [{
 script = ExtResource("1_nfbn3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(80, 80)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_3wj4n")
 animation = &"going_up"
