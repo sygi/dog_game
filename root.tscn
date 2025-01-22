@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt6ykv1wpa2dv"]
+
+[ext_resource type="PackedScene" uid="uid://8efwgxdpe0vr" path="res://player.tscn" id="1_gayhf"]
+
+[node name="root" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_gayhf")]
+
+[node name="background" type="Sprite2D" parent="."]
+
+[node name="dogs" type="Node2D" parent="."]
+
+[node name="house" type="Node2D" parent="."]
