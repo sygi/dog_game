@@ -7,9 +7,6 @@ var last_direction: String = ""
 var screen_size: Vector2
 
 func _ready() -> void:
-	# playing animation
-	$AnimatedSprite2D.play("going_up")
-
 	screen_size = get_viewport_rect().size
 
 func update_animation():

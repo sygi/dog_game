@@ -1,6 +1,64 @@
-[gd_scene load_steps=2 format=3 uid="uid://8ci3tpm60tvv"]
+[gd_scene load_steps=8 format=3 uid="uid://8ci3tpm60tvv"]
 
 [ext_resource type="Script" path="res://dog.gd" id="1_4dp7p"]
+[ext_resource type="Texture2D" uid="uid://b5jsvjptm7g36" path="res://assets/dog.png" id="2_7kgce"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwbpu"]
+atlas = ExtResource("2_7kgce")
+region = Rect2(480, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hy53"]
+atlas = ExtResource("2_7kgce")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a25rc"]
+atlas = ExtResource("2_7kgce")
+region = Rect2(96, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ymkpu"]
+atlas = ExtResource("2_7kgce")
+region = Rect2(352, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m1mtx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwbpu")
+}],
+"loop": true,
+"name": &"idle_black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hy53")
+}],
+"loop": true,
+"name": &"idle_brown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a25rc")
+}],
+"loop": true,
+"name": &"idle_white",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ymkpu")
+}],
+"loop": true,
+"name": &"idle_yellow",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_4dp7p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(160, 160)
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_m1mtx")
+animation = &"idle_white"
