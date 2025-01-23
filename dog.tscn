@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://8ci3tpm60tvv"]
+[gd_scene load_steps=8 format=3 uid="uid://8ci3tpm60tvv"]
 
 [ext_resource type="Script" path="res://dog.gd" id="1_4dp7p"]
 [ext_resource type="Texture2D" uid="uid://b5jsvjptm7g36" path="res://assets/dog.png" id="2_7kgce"]
-[ext_resource type="Script" path="res://dog_active_marker.gd" id="3_yrgip"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwbpu"]
 atlas = ExtResource("2_7kgce")
@@ -73,4 +72,3 @@ polygon = PackedVector2Array(-77, -20, -60, -60, -4, -61, 89, -27, 89, 74, -64, 
 [node name="marker" type="Node2D" parent="."]
 visible = false
 position = Vector2(151, 24)
-script = ExtResource("3_yrgip")
