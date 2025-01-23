@@ -7,7 +7,7 @@ const DOG_SPEED = 100 # px/s
 
 @export var speed = 400 # px/s
 @export var ACTIVATION_DISTANCE = 100 # px
-@export var LEASH_LENGTH = 50 # px
+@export var LEASH_LENGTH = 100 # px
 
 var last_direction: String = ""
 var screen_size: Vector2
@@ -16,7 +16,9 @@ var leashed_dog = null
 
 var n_dogs: int = 0
 var dog_score: int = 0
-var pull_direction: Vector2
+# We store current and the next pull direction
+var pull_directions_schedule: Array[Vector2] = [Vector2.UP.rotated(randf_range(0, TAU))]
+var current_pull_direction: Vector2
 var pull_timer: float = 0
 var dog_scene = preload("res://dog.tscn")
 
@@ -82,17 +84,20 @@ func move_player(delta: float):
 	pull_timer += delta
 	if (pull_timer > NEXT_PULL_TIME):
 		var pull_direction_change = randf_range(-NEXT_PULL_RANGE, NEXT_PULL_RANGE)
-		pull_direction = pull_direction.rotated(pull_direction_change)
+		pull_directions_schedule.append(pull_directions_schedule[-1].rotated(pull_direction_change))
+	if pull_directions_schedule.size() > 2:
+		pull_directions_schedule.pop_front()
 	pull_timer = fmod(pull_timer, NEXT_PULL_TIME)
-
-	var pull_velocity = pull_direction * n_dogs * DOG_SPEED
+	var proportion = pull_timer / NEXT_PULL_TIME
+	current_pull_direction = pull_directions_schedule[0].lerp(pull_directions_schedule[-1], proportion)
+	var pull_velocity = current_pull_direction * n_dogs * DOG_SPEED
 	velocity += pull_velocity
 
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
 	if leashed_dog != null:
 		# TODO: make this smoother
-		leashed_dog.position = pull_direction * LEASH_LENGTH
+		leashed_dog.position = current_pull_direction * LEASH_LENGTH
 
 func add_leashed_dog(breed: String):
 	set_dog_counter(n_dogs + 1)
@@ -118,8 +123,6 @@ func get_direction():
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size - sprite_size()
-
-	pull_direction = Vector2.UP.rotated(randf_range(0, TAU))
 
 func _process(delta: float) -> void:
 	update_animation()
