@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bt6ykv1wpa2dv"]
+[gd_scene load_steps=5 format=3 uid="uid://bt6ykv1wpa2dv"]
 
 [ext_resource type="PackedScene" uid="uid://8efwgxdpe0vr" path="res://player.tscn" id="1_gayhf"]
 [ext_resource type="Script" path="res://dogs_manager.gd" id="2_lrd6m"]
 [ext_resource type="PackedScene" uid="uid://bj8otl58obswd" path="res://house.tscn" id="3_k61eu"]
+
+[sub_resource type="Theme" id="Theme_58q5j"]
+default_font_size = 50
 
 [node name="root" type="Node2D"]
 
@@ -17,6 +20,9 @@ script = ExtResource("2_lrd6m")
 position = Vector2(1147, 21)
 
 [node name="dog_counter" type="RichTextLabel" parent="."]
-offset_right = 300.0
-offset_bottom = 103.0
+offset_left = 24.0
+offset_top = 14.0
+offset_right = 324.0
+offset_bottom = 117.0
+theme = SubResource("Theme_58q5j")
 text = "0"

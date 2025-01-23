@@ -7,15 +7,18 @@ const DOG_SPEED = 100 # px/s
 
 @export var speed = 400 # px/s
 @export var ACTIVATION_DISTANCE = 100 # px
+@export var LEASH_LENGTH = 50 # px
 
 var last_direction: String = ""
 var screen_size: Vector2
 var active_dog = null # TODO: remove this
+var leashed_dog = null
 
 var n_dogs: int = 0
 var dog_score: int = 0
 var pull_direction: Vector2
 var pull_timer: float = 0
+var dog_scene = preload("res://dog.tscn")
 
 func set_dog_counter(value: int):
 	n_dogs = value
@@ -49,9 +52,10 @@ func activate_dog():
 		return
 
 	if not dog.is_active:
+		var breed = dog.breed
 		dog.activate()
 		#active_dog = dog
-		set_dog_counter(n_dogs + 1)
+		add_leashed_dog(breed)
 
 func sprite_size() -> Vector2:
 	var sprite_frames = $AnimatedSprite2D.sprite_frames
@@ -86,6 +90,18 @@ func move_player(delta: float):
 
 	position += velocity * delta
 	position = position.clamp(Vector2.ZERO, screen_size)
+	if leashed_dog != null:
+		# TODO: make this smoother
+		leashed_dog.position = pull_direction * LEASH_LENGTH
+
+func add_leashed_dog(breed: String):
+	set_dog_counter(n_dogs + 1)
+	if n_dogs == 1:
+		# first dog, visualizing it
+		leashed_dog = dog_scene.instantiate()
+		leashed_dog.breed = breed
+		leashed_dog.remove_from_group("dogs")
+		add_child(leashed_dog)
 
 func get_direction():
 	var direction = Vector2.ZERO
@@ -114,4 +130,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("house"):
 		dog_score += n_dogs # TODO: something growing quicker than linear here
 		set_dog_counter(0)
+		if leashed_dog != null:
+			leashed_dog.queue_free()
+
 		print("player entered the house")
