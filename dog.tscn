@@ -56,20 +56,21 @@ animations = [{
 }]
 
 [node name="Node2D" type="Node2D" groups=["dogs"]]
-position = Vector2(80, 80)
 script = ExtResource("1_4dp7p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_m1mtx")
 animation = &"idle_black"
+centered = false
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2(78, 76)
 polygon = PackedVector2Array(-77, -20, -60, -60, -4, -61, 89, -27, 89, 74, -64, 75)
 
 [node name="marker" type="Node2D" parent="."]
 visible = false
-position = Vector2(40, 0)
+position = Vector2(151, 24)
 script = ExtResource("3_yrgip")

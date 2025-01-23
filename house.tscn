@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj8otl58obswd"]
+
+[ext_resource type="Texture2D" uid="uid://dv6qthtjga52h" path="res://assets/house_nobg.png" id="1_gydsc"]
+
+[node name="house" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_gydsc")
+centered = false

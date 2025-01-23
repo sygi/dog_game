@@ -40,8 +40,15 @@ func activate_dog():
 		dog.activate()
 		active_dog = dog
 
+func sprite_size() -> Vector2:
+	var sprite_frames = $AnimatedSprite2D.sprite_frames
+	var texture       = sprite_frames.get_frame_texture("up_idle", 0)
+	var texture_size  = texture.get_size()
+	var as2d_size     = texture_size * $AnimatedSprite2D.get_scale()
+	return as2d_size
+
 func _ready() -> void:
-	screen_size = get_viewport_rect().size
+	screen_size = get_viewport_rect().size - sprite_size()
 
 func update_animation():
 	for direction in POSSIBLE_DIRECTIONS:
