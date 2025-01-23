@@ -10,9 +10,10 @@ const DOG_SPEED = 100 # px/s
 
 var last_direction: String = ""
 var screen_size: Vector2
-var active_dog = null
+var active_dog = null # TODO: remove this
 
-var dogs: int = 1
+var n_dogs: int = 0
+var dog_score: int = 0
 var pull_direction: Vector2
 var pull_timer: float = 0
 
@@ -46,7 +47,8 @@ func activate_dog():
 
 	if not dog.is_active:
 		dog.activate()
-		active_dog = dog
+		#active_dog = dog
+		n_dogs += 1
 
 func sprite_size() -> Vector2:
 	var sprite_frames = $AnimatedSprite2D.sprite_frames
@@ -76,7 +78,7 @@ func move_player(delta: float):
 		pull_direction = pull_direction.rotated(pull_direction_change)
 	pull_timer = fmod(pull_timer, NEXT_PULL_TIME)
 
-	var pull_velocity = pull_direction * dogs * DOG_SPEED
+	var pull_velocity = pull_direction * n_dogs * DOG_SPEED
 	velocity += pull_velocity
 
 	position += velocity * delta
@@ -107,4 +109,6 @@ func _process(delta: float) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("house"):
+		dog_score += n_dogs # TODO: something growing quicker than linear here
+		n_dogs = 0
 		print("player entered the house")

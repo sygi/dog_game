@@ -12,6 +12,7 @@ func activate() -> void:
 	"""I'm close to the player"""
 	$marker.visible = true
 	is_active = true
+	queue_free()
 
 func deactivate() -> void:
 	"""I'm far from the player"""
