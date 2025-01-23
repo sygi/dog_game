@@ -19,7 +19,7 @@ script = ExtResource("1_437ge")
 [node name="House" parent="." instance=ExtResource("3_k61eu")]
 position = Vector2(1147, 21)
 
-[node name="dog_counter" type="RichTextLabel" parent="."]
+[node name="Score" type="RichTextLabel" parent="."]
 offset_left = 24.0
 offset_top = 14.0
 offset_right = 324.0
