@@ -24,6 +24,8 @@ var dog_scene = preload("res://dog.tscn")
 
 func set_dog_counter(value: int):
 	n_dogs = value
+	if value == 0 and leashed_dog != null:
+		leashed_dog.queue_free()
 	$"../dog_counter".text = str(value)
 
 func get_closest_dog() -> Array:
@@ -58,6 +60,11 @@ func activate_dog():
 		dog.activate()
 		#active_dog = dog
 		add_leashed_dog(breed)
+
+func potentially_release_dog():
+	if Input.is_action_just_pressed(&"select"):
+		if n_dogs > 0:
+			set_dog_counter(n_dogs - 1)
 
 func sprite_size() -> Vector2:
 	var sprite_frames = $AnimatedSprite2D.sprite_frames
@@ -128,6 +135,7 @@ func _process(delta: float) -> void:
 	update_animation()
 	activate_dog()
 	move_player(delta)
+	potentially_release_dog()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("house"):
@@ -135,5 +143,3 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		set_dog_counter(0)
 		if leashed_dog != null:
 			leashed_dog.queue_free()
-
-		print("player entered the house")
