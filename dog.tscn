@@ -54,7 +54,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D" type="Node2D" groups=["dogs"]]
 position = Vector2(80, 80)
 script = ExtResource("1_4dp7p")
 
@@ -62,3 +62,10 @@ script = ExtResource("1_4dp7p")
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_m1mtx")
 animation = &"idle_white"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-77, -20, -60, -60, -4, -61, 89, -27, 89, 74, -64, 75)
+
+[node name="Marker2D" type="Marker2D" parent="."]

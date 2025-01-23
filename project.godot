@@ -14,6 +14,10 @@ config/name="Chained dog game"
 run/main_scene="res://root.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
+[global_group]
+
+dogs=""
+
 [input]
 
 up={

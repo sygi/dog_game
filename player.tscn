@@ -186,3 +186,8 @@ position = Vector2(81, 80)
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_3wj4n")
 animation = &"left"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(30, 24, 66, 2, 139, 9, 142, 162, 31, 161)
