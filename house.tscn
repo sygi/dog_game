@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bj8otl58obswd"]
 
-[ext_resource type="Texture2D" uid="uid://dv6qthtjga52h" path="res://assets/house_nobg.png" id="1_gydsc"]
+[ext_resource type="Texture2D" uid="uid://d1vify2pjvcpb" path="res://assets/house_nobg.png" id="1_gydsc"]
 [ext_resource type="Script" path="res://house.gd" id="1_k6mvs"]
 
 [node name="house" type="Node2D"]
+scale = Vector2(0.3, 0.3)
 script = ExtResource("1_k6mvs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

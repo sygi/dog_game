@@ -15,4 +15,3 @@ script = ExtResource("2_lrd6m")
 
 [node name="house" parent="." instance=ExtResource("3_k61eu")]
 position = Vector2(1147, 21)
-scale = Vector2(0.3, 0.3)
