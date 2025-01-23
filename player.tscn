@@ -178,7 +178,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="player" type="Node2D"]
+[node name="Player" type="Node2D"]
 script = ExtResource("1_nfbn3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

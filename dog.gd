@@ -8,6 +8,14 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("idle_" + breed)
 
 
+func sprite_size() -> Vector2:
+	var sprite_frames = $AnimatedSprite2D.sprite_frames
+	var texture       = sprite_frames.get_frame_texture("idle_black", 0)
+	var texture_size  = texture.get_size()
+	var as2d_size     = texture_size * $AnimatedSprite2D.get_scale()
+	return as2d_size
+
+
 func activate() -> void:
 	"""I'm close to the player"""
 	$marker.visible = true
