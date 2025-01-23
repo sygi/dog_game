@@ -65,17 +65,17 @@ func update_animation():
 	# Not moving right now.
 	if last_direction != "":
 		$AnimatedSprite2D.play(last_direction + "_idle")
-		
+
 func move_player(delta: float):
 	var direction = get_direction()
 	var velocity = direction * speed
-	
+
 	pull_timer += delta
 	if (pull_timer > NEXT_PULL_TIME):
 		var pull_direction_change = randf_range(-NEXT_PULL_RANGE, NEXT_PULL_RANGE)
 		pull_direction = pull_direction.rotated(pull_direction_change)
 	pull_timer = fmod(pull_timer, NEXT_PULL_TIME)
-	
+
 	var pull_velocity = pull_direction * dogs * DOG_SPEED
 	velocity += pull_velocity
 
@@ -97,10 +97,14 @@ func get_direction():
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size - sprite_size()
-	
+
 	pull_direction = Vector2.UP.rotated(randf_range(0, TAU))
 
 func _process(delta: float) -> void:
 	update_animation()
 	activate_dog()
 	move_player(delta)
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("house"):
+		print("player entered the house")
