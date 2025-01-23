@@ -1,6 +1,13 @@
-1. add some graphics with just squares for all the objects
+1. add some graphics with just squares for all the objects - missing goal
 2. add basic movement for the player
 3. Jakub: write some code for instantiating dogs
 4. ability to pick up dogs
 5. how to affect the movement once you have a dog?
 7. Keenan: play with the animation movement
+6. texture offset and collisions
+7. collisions: let's not do that right now
+6. size of the screen: let's do 1440 for a start
+7. camera movement: let's not do that now
+8. leash / movement dynamics: 
+   a. for a start, let's make the dog always pull the player in some direction, let's make the directions smooth
+   b. it'd be cool to try making the leash more physically accurate

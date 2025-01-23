@@ -62,7 +62,7 @@ script = ExtResource("1_4dp7p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_m1mtx")
-animation = &"idle_white"
+animation = &"idle_black"
 
 [node name="Area2D" type="Area2D" parent="."]
 
