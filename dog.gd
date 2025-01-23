@@ -10,14 +10,12 @@ func _ready() -> void:
 
 func activate() -> void:
 	"""I'm close to the player"""
-	print("activating")
-	# TODO: how do you add some picture to show one gets activated?
-	draw_circle(Vector2.ZERO, 100, Color.WHITE)
+	$marker.visible = true
 	is_active = true
 
 func deactivate() -> void:
 	"""I'm far from the player"""
-	print("deactivating")
+	$marker.visible = false
 	is_active = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
