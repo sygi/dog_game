@@ -15,3 +15,8 @@ script = ExtResource("2_lrd6m")
 
 [node name="house" parent="." instance=ExtResource("3_k61eu")]
 position = Vector2(1147, 21)
+
+[node name="dog_counter" type="RichTextLabel" parent="."]
+offset_right = 300.0
+offset_bottom = 103.0
+text = "0"

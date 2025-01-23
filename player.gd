@@ -17,6 +17,9 @@ var dog_score: int = 0
 var pull_direction: Vector2
 var pull_timer: float = 0
 
+func set_dog_counter(value: int):
+	n_dogs = value
+	$"../dog_counter".text = str(value)
 
 func get_closest_dog() -> Array:
 	var closest_dog = null
@@ -48,7 +51,7 @@ func activate_dog():
 	if not dog.is_active:
 		dog.activate()
 		#active_dog = dog
-		n_dogs += 1
+		set_dog_counter(n_dogs + 1)
 
 func sprite_size() -> Vector2:
 	var sprite_frames = $AnimatedSprite2D.sprite_frames
@@ -110,5 +113,5 @@ func _process(delta: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("house"):
 		dog_score += n_dogs # TODO: something growing quicker than linear here
-		n_dogs = 0
+		set_dog_counter(0)
 		print("player entered the house")
