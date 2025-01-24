@@ -45,5 +45,5 @@ func _on_timer_timeout() -> void:
 	bark()
 
 func _process(delta: float) -> void:
-	var player_offset = Vector2(80, 80)
+	var player_offset = Vector2(40, 40)
 	$Line2D.points[-1] = -position + player_offset

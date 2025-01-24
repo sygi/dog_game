@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bt6ykv1wpa2dv"]
+[gd_scene load_steps=9 format=3 uid="uid://bt6ykv1wpa2dv"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_437ge"]
 [ext_resource type="PackedScene" uid="uid://8efwgxdpe0vr" path="res://player.tscn" id="1_gayhf"]
@@ -25,6 +25,7 @@ grow_vertical = 2
 script = ExtResource("1_437ge")
 
 [node name="Player" parent="." instance=ExtResource("1_gayhf")]
+position = Vector2(396, 255)
 
 [node name="Background" type="Sprite2D" parent="."]
 z_index = -1
@@ -34,7 +35,7 @@ centered = false
 [node name="Dogs" type="Node2D" parent="."]
 
 [node name="House" parent="." instance=ExtResource("3_k61eu")]
-position = Vector2(1147, 21)
+position = Vector2(1082, 112)
 
 [node name="Score" type="RichTextLabel" parent="."]
 layout_mode = 0

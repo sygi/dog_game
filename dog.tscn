@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://dog.gd" id="1_4dp7p"]
 [ext_resource type="Texture2D" uid="uid://b5jsvjptm7g36" path="res://assets/dog.png" id="2_7kgce"]
-[ext_resource type="AudioStream" uid="uid://38ulv1hi1yhu" path="res://assets/dog_sounds/Dog/Dog Bark 0.wav" id="3_sho5o"]
-[ext_resource type="Texture2D" uid="uid://cq5hd3cfqov0d" path="res://assets/chain.png" id="4_ikx5p"]
+[ext_resource type="AudioStream" uid="uid://bnls8muhn8wko" path="res://assets/dog_sounds/Dog/Dog Bark 0.wav" id="3_sho5o"]
+[ext_resource type="Texture2D" uid="uid://crhivy1batcsn" path="res://assets/chain.png" id="4_ikx5p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwbpu"]
 atlas = ExtResource("2_7kgce")
@@ -62,12 +62,12 @@ script = ExtResource("1_4dp7p")
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
 texture_repeat = 2
-width = 15.0
+width = 7.0
 texture = ExtResource("4_ikx5p")
 texture_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(5, 5)
+scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_m1mtx")
 animation = &"idle_black"
 centered = false
@@ -76,7 +76,7 @@ centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 position = Vector2(78, 76)
-polygon = PackedVector2Array(-77, -20, -60, -60, -4, -61, 89, -27, 89, 74, -64, 75)
+polygon = PackedVector2Array(-77, -20, -70, -66, -4, -61, -20, -14)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_sho5o")

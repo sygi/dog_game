@@ -1,18 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://bj8otl58obswd"]
 
-[ext_resource type="Texture2D" uid="uid://d1vify2pjvcpb" path="res://assets/house_nobg.png" id="1_gydsc"]
 [ext_resource type="Script" path="res://house.gd" id="1_k6mvs"]
+[ext_resource type="Texture2D" uid="uid://bxxvr82lv55in" path="res://assets/house2_nobg.png" id="2_vusvu"]
 
 [node name="house" type="Node2D"]
-scale = Vector2(0.3, 0.3)
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_k6mvs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-texture = ExtResource("1_gydsc")
+texture = ExtResource("2_vusvu")
 centered = false
 
 [node name="Area2D" type="Area2D" parent="." groups=["house"]]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
-polygon = PackedVector2Array(221, 539, 238, 291, 795, 300, 798, 534, 529, 676)
+position = Vector2(-260, -223.333)
+polygon = PackedVector2Array(303.333, 583.333, 303.333, 373.333, 546.667, 243.333, 730, 366.667, 723.333, 596.667, 529, 676)
