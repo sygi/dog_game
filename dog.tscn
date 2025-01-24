@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://8ci3tpm60tvv"]
+[gd_scene load_steps=10 format=3 uid="uid://8ci3tpm60tvv"]
 
 [ext_resource type="Script" path="res://dog.gd" id="1_4dp7p"]
 [ext_resource type="Texture2D" uid="uid://b5jsvjptm7g36" path="res://assets/dog.png" id="2_7kgce"]
-[ext_resource type="AudioStream" uid="uid://38ulv1hi1yhu" path="res://assets/dog_sounds/Dog/Dog Bark 0.wav" id="3_sho5o"]
+[ext_resource type="AudioStream" uid="uid://bnls8muhn8wko" path="res://assets/dog_sounds/Dog/Dog Bark 0.wav" id="3_sho5o"]
+[ext_resource type="Texture2D" uid="uid://crhivy1batcsn" path="res://assets/chain.png" id="4_ikx5p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwbpu"]
 atlas = ExtResource("2_7kgce")
@@ -57,7 +58,13 @@ animations = [{
 
 [node name="Dog" type="Node2D" groups=["dogs"]]
 script = ExtResource("1_4dp7p")
-leash_color = Color(1.64848e-06, 0.3868, 0, 1)
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+texture_repeat = 2
+width = 15.0
+texture = ExtResource("4_ikx5p")
+texture_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)

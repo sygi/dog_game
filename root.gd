@@ -7,13 +7,14 @@ enum GameState {Starting, Active, Ended}
 var state: GameState = GameState.Starting
 var dog_scene = preload("res://dog.tscn")
 @export var MIN_PLAYER_DIST = 100
+var DEBUG = false
 
 
 func _on_pre_countdown_timer_timeout():
 	$PreCountdownTimer.queue_free()
 	var countdown_timer = Timer.new()
 	countdown_timer.name = "CountdownTimer"
-	countdown_timer.wait_time = 2
+	countdown_timer.wait_time = 0.1 if DEBUG else 2
 	countdown_timer.one_shot = true
 	add_child(countdown_timer)
 	countdown_timer.timeout.connect(_on_countdown_timer_timeout)
@@ -23,7 +24,7 @@ func _on_countdown_timer_timeout():
 	$CountdownTimer.queue_free()
 	var post_countdown_timer = Timer.new()
 	post_countdown_timer.name = "PostCountdownTimer"
-	post_countdown_timer.wait_time = 0.5
+	post_countdown_timer.wait_time = 0.1 if DEBUG else 0.5
 	post_countdown_timer.one_shot = true
 	add_child(post_countdown_timer)
 	post_countdown_timer.timeout.connect(on_post_countdown_timer_timeout)
@@ -35,7 +36,7 @@ func on_post_countdown_timer_timeout():
 	
 	var start_text_timer = Timer.new()
 	start_text_timer.name = "StartTextTimer"
-	start_text_timer.wait_time = 0.5
+	start_text_timer.wait_time = 0.1 if DEBUG else 0.5
 	start_text_timer.one_shot = true
 	add_child(start_text_timer)
 	start_text_timer.timeout.connect(on_start_text_timer_timeout)
@@ -67,7 +68,7 @@ func fill_world_with_dogs():
 func _ready() -> void:
 	var pre_countdown_timer = Timer.new()
 	pre_countdown_timer.name = "PreCountdownTimer"
-	pre_countdown_timer.wait_time = 0.5
+	pre_countdown_timer.wait_time = 0.1 if DEBUG else 0.5
 	pre_countdown_timer.one_shot = true
 	add_child(pre_countdown_timer)
 	pre_countdown_timer.timeout.connect(_on_pre_countdown_timer_timeout)
