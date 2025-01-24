@@ -149,7 +149,7 @@ func _process(delta: float) -> void:
 		$"../ReleaseWarning".update_movement_stats(velocity_and_direction[0].length())
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("house") and n_dogs > 0:
+	if area.is_in_group("house") and n_dogs > 0 and get_parent().state == 1:
 		var new_score = (10 * n_dogs) + pow(n_dogs, 2)
 		score += new_score
 		$"../Score".text = str(score)
