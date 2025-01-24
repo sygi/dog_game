@@ -57,6 +57,7 @@ animations = [{
 
 [node name="Dog" type="Node2D" groups=["dogs"]]
 script = ExtResource("1_4dp7p")
+leash_color = Color(1.64848e-06, 0.3868, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(5, 5)
@@ -72,6 +73,7 @@ polygon = PackedVector2Array(-77, -20, -60, -60, -4, -61, 89, -27, 89, 74, -64, 
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_sho5o")
+volume_db = -15.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
