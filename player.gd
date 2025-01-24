@@ -6,6 +6,7 @@ const NEXT_PULL_RANGE = PI / 4 # rads
 const DOG_SPEED = 100 # px/s
 
 @export var speed = 400 # px/s
+@export var score = 0
 @export var ACTIVATION_DISTANCE = 100 # px
 @export var LEASH_LENGTH = 100 # px
 
@@ -14,7 +15,6 @@ var screen_size: Vector2
 var leashed_dogs = []
 
 var n_dogs: int = 0
-var dog_score: int = 0
 # We store current and the next pull direction
 var pull_directions_schedule = []  # [dog, directions]
 var current_pull_direction: Vector2
@@ -151,6 +151,6 @@ func _process(delta: float) -> void:
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("house") and n_dogs > 0:
 		var new_score = (10 * n_dogs) + pow(n_dogs, 2)
-		dog_score += new_score
-		$"../Score".text = str(dog_score)
+		score += new_score
+		$"../Score".text = str(score)
 		set_dogs(0)
