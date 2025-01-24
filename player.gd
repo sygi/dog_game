@@ -109,6 +109,7 @@ func move_player(delta: float):
 	position = position.clamp(Vector2.ZERO, screen_size)
 	for dog in range(leashed_dogs.size()):
 		leashed_dogs[dog].position = pull_directions[dog] * LEASH_LENGTH
+	return [velocity, direction]
 
 func add_leashed_dog(breed: String, direction: Vector2):
 	set_dogs(n_dogs + 1)
@@ -139,8 +140,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	update_animation()
 	activate_dog()
-	move_player(delta)
+	var velocity_and_direction = move_player(delta)
 	potentially_release_dog()
+	if velocity_and_direction[1] == Vector2.ZERO:
+		$"../ReleaseWarning".update_movement_stats(1000.)
+	else:
+		$"../ReleaseWarning".update_movement_stats(velocity_and_direction[0].length())
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("house") and n_dogs > 0:

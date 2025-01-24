@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt6ykv1wpa2dv"]
+[gd_scene load_steps=6 format=3 uid="uid://bt6ykv1wpa2dv"]
 
 [ext_resource type="Script" path="res://root.gd" id="1_437ge"]
 [ext_resource type="PackedScene" uid="uid://8efwgxdpe0vr" path="res://player.tscn" id="1_gayhf"]
 [ext_resource type="PackedScene" uid="uid://bj8otl58obswd" path="res://house.tscn" id="3_k61eu"]
+[ext_resource type="Script" path="res://release_warning.gd" id="4_yx7kf"]
 
 [sub_resource type="Theme" id="Theme_58q5j"]
 default_font_size = 50
@@ -26,3 +27,28 @@ offset_right = 324.0
 offset_bottom = 117.0
 theme = SubResource("Theme_58q5j")
 text = "0"
+
+[node name="ReleaseWarning" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 579.0
+offset_top = 805.0
+offset_right = 924.0
+offset_bottom = 883.0
+script = ExtResource("4_yx7kf")
+WARNING_TIME = null
+WARNING_THRESHOLD = null
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ReleaseWarning"]
+layout_mode = 0
+offset_right = 294.0
+offset_bottom = 55.0
+text = "Press SPACE to release a dog"
+fit_content = true
+
+[node name="Timer" type="Timer" parent="ReleaseWarning"]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="ReleaseWarning/Timer" to="ReleaseWarning" method="_on_timer_timeout"]
