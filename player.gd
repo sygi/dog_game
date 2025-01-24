@@ -11,7 +11,6 @@ const DOG_SPEED = 100 # px/s
 
 var last_direction: String = ""
 var screen_size: Vector2
-var active_dog = null # TODO: remove this
 var leashed_dogs = []
 
 var n_dogs: int = 0
@@ -42,9 +41,6 @@ func get_closest_dog() -> Array:
 			closest_distance = distance
 			closest_direction = position.direction_to(dog.position)
 
-	if active_dog != null and closest_dog != active_dog:
-		active_dog.deactivate()
-		active_dog = null
 	return [closest_dog, closest_distance, closest_direction]
 
 func activate_dog():
@@ -55,16 +51,11 @@ func activate_dog():
 		return
 	var distance = dog_and_dist_dir[1]
 	if distance > ACTIVATION_DISTANCE:
-		if active_dog != null:
-			active_dog.deactivate()
-			active_dog = null
 		return
 
-	if not dog.is_active:
-		var breed = dog.breed
-		dog.activate()
-		#active_dog = dog
-		add_leashed_dog(breed, dog_and_dist_dir[2])
+	var breed = dog.breed
+	dog.queue_free()
+	add_leashed_dog(breed, dog_and_dist_dir[2])
 
 func potentially_release_dog():
 	if Input.is_action_just_pressed(&"select"):
@@ -88,7 +79,7 @@ func update_animation():
 	# Not moving right now.
 	if last_direction != "":
 		$AnimatedSprite2D.play(last_direction + "_idle")
-		
+
 static func sum_array(array):
 	var sum = Vector2(0.0, 0.0)
 	for element in array:
@@ -120,7 +111,7 @@ func move_player(delta: float):
 		leashed_dogs[dog].position = pull_directions[dog] * LEASH_LENGTH
 
 func add_leashed_dog(breed: String, direction: Vector2):
-	set_dogs(n_dogs + 1)	
+	set_dogs(n_dogs + 1)
 	var leashed_dog = dog_scene.instantiate()
 	leashed_dog.breed = breed
 	leashed_dog.remove_from_group("dogs")
