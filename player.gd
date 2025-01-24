@@ -115,9 +115,10 @@ func add_leashed_dog(breed: String, direction: Vector2):
 	set_dogs(n_dogs + 1)
 	var leashed_dog = dog_scene.instantiate()
 	leashed_dog.breed = breed
-	leashed_dog.remove_from_group("dogs")
+	leashed_dog.start_running()
 	leashed_dog.position = direction * LEASH_LENGTH
 	add_child(leashed_dog)
+	leashed_dog.bark()  # needs to happen after it's in the tree
 	leashed_dogs.append(leashed_dog)
 	pull_directions_schedule.append([direction, direction])
 
