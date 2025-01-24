@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://c22d5yfmpfmxy"]
+
+[sub_resource type="Theme" id="Theme_3xusf"]
+default_font_size = 50
+
+[node name="Title" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Text" type="Label" parent="CenterContainer"]
+layout_mode = 2
+theme = SubResource("Theme_3xusf")
+text = "Press any key"
+horizontal_alignment = 1

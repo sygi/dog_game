@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://dog.gd" id="1_4dp7p"]
 [ext_resource type="Texture2D" uid="uid://b5jsvjptm7g36" path="res://assets/dog.png" id="2_7kgce"]
-[ext_resource type="AudioStream" uid="uid://bnls8muhn8wko" path="res://assets/dog_sounds/Dog/Dog Bark 0.wav" id="3_sho5o"]
+[ext_resource type="AudioStream" uid="uid://38ulv1hi1yhu" path="res://assets/dog_sounds/Dog/Dog Bark 0.wav" id="3_sho5o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwbpu"]
 atlas = ExtResource("2_7kgce")
