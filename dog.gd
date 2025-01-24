@@ -24,13 +24,21 @@ func start_running():
 	running = true
 	remove_from_group("dogs")
 
+func barking_delay():
+	return randf_range(0.7, 3.)
+
 func bark():
-	if !$AudioStreamPlayer.is_playing():
+	if is_inside_tree() and !$AudioStreamPlayer.is_playing():
 		$AudioStreamPlayer.stream = barking_sounds[randi() % 4]
 		$AudioStreamPlayer.play()
+	$Timer.wait_time = barking_delay()
+	$Timer.start()
 
 func activate() -> void:
 	queue_free()
+
+func _on_timer_timeout() -> void:
+	bark()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
