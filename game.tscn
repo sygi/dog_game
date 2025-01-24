@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://7nj3dlet8adt"]
+[gd_scene load_steps=9 format=3 uid="uid://bt6ykv1wpa2dv"]
 
-[ext_resource type="Script" path="res://game.gd" id="1_0gtgd"]
-[ext_resource type="PackedScene" uid="uid://c22d5yfmpfmxy" path="res://title.tscn" id="1_q71ff"]
+[ext_resource type="Script" path="res://game.gd" id="1_lwlps"]
+[ext_resource type="PackedScene" uid="uid://8efwgxdpe0vr" path="res://player.tscn" id="2_qnum4"]
+[ext_resource type="Texture2D" uid="uid://dueswqnwn08rr" path="res://assets/background1.png" id="3_33tft"]
+[ext_resource type="PackedScene" uid="uid://bj8otl58obswd" path="res://house.tscn" id="4_wqubn"]
+[ext_resource type="Script" path="res://release_warning.gd" id="5_wuam6"]
+
+[sub_resource type="Theme" id="Theme_58q5j"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_mwhwv"]
+default_font_size = 50
+
+[sub_resource type="Theme" id="Theme_chuwi"]
+default_font_size = 50
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -10,7 +22,82 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0gtgd")
+script = ExtResource("1_lwlps")
 
-[node name="Title" parent="." instance=ExtResource("1_q71ff")]
+[node name="Player" parent="." instance=ExtResource("2_qnum4")]
+position = Vector2(396, 255)
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("3_33tft")
+centered = false
+
+[node name="Dogs" type="Node2D" parent="."]
+
+[node name="House" parent="." instance=ExtResource("4_wqubn")]
+position = Vector2(1082, 112)
+
+[node name="Score" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 14.0
+offset_right = 324.0
+offset_bottom = 117.0
+theme = SubResource("Theme_58q5j")
+text = "0"
+
+[node name="TimeLeft" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="TimeLeftLabel" type="Label" parent="."]
 layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 69.0
+grow_horizontal = 2
+theme = SubResource("Theme_mwhwv")
+
+[node name="ReleaseWarning" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 579.0
+offset_top = 805.0
+offset_right = 924.0
+offset_bottom = 883.0
+script = ExtResource("5_wuam6")
+WARNING_TIME = null
+WARNING_THRESHOLD = null
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ReleaseWarning"]
+layout_mode = 0
+offset_right = 294.0
+offset_bottom = 55.0
+text = "Press SPACE to release a dog"
+fit_content = true
+
+[node name="Timer" type="Timer" parent="ReleaseWarning"]
+wait_time = 1.5
+one_shot = true
+
+[node name="Announce" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.5
+offset_top = -34.5
+offset_right = 51.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_chuwi")
+horizontal_alignment = 1
+
+[connection signal="timeout" from="ReleaseWarning/Timer" to="ReleaseWarning" method="_on_timer_timeout"]
