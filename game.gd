@@ -108,6 +108,8 @@ func _ready() -> void:
 	add_child(pre_countdown_timer)
 	pre_countdown_timer.timeout.connect(_on_pre_countdown_timer_timeout)
 	pre_countdown_timer.start()
+	if DEBUG:
+		$TimeLeft.wait_time = 5
 
 func _process(delta: float) -> void:
 	match state:
