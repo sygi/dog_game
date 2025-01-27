@@ -11,10 +11,13 @@ var barking_sounds = [
 ]
 
 func _ready() -> void:
-	$AnimatedSprite2D.play("idle_" + breed)
-	var dog_offset = Vector2(sprite_size().x / 2, sprite_size().y / 2)
-	$Line2D.add_point(dog_offset)
-	$Line2D.add_point(dog_offset)
+	if running:
+		# TODO: running animations
+		$AnimatedSprite2D.play("idle_" + breed)
+	else:
+		$AnimatedSprite2D.play("idle_" + breed)
+		for point in $Path2D.curve.get_baked_points():
+			$Line2D.add_point(point + $Path2D.position) 
 
 func sprite_size() -> Vector2:
 	var sprite_frames = $AnimatedSprite2D.sprite_frames
@@ -25,6 +28,12 @@ func sprite_size() -> Vector2:
 
 func start_running():
 	running = true
+	var dog_offset = Vector2(sprite_size().x / 2, sprite_size().y / 2)
+	$Pole.visible = false
+	$Line2D.position = Vector2.ZERO
+	$Line2D.clear_points()
+	$Line2D.add_point(dog_offset)
+	$Line2D.add_point(dog_offset)
 	$Line2D.visible = true
 	remove_from_group("dogs")
 
@@ -45,5 +54,6 @@ func _on_timer_timeout() -> void:
 	bark()
 
 func _process(delta: float) -> void:
-	var player_offset = Vector2(40, 40)
-	$Line2D.points[-1] = -position + player_offset
+	if running:
+		var player_offset = Vector2(40, 40)
+		$Line2D.points[-1] = -position + player_offset

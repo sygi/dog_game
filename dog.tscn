@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://8ci3tpm60tvv"]
+[gd_scene load_steps=12 format=3 uid="uid://8ci3tpm60tvv"]
 
 [ext_resource type="Script" path="res://dog.gd" id="1_4dp7p"]
 [ext_resource type="Texture2D" uid="uid://b5jsvjptm7g36" path="res://assets/dog.png" id="2_7kgce"]
-[ext_resource type="AudioStream" uid="uid://38ulv1hi1yhu" path="res://assets/dog_sounds/Dog/Dog Bark 0.wav" id="3_sho5o"]
-[ext_resource type="Texture2D" uid="uid://cq5hd3cfqov0d" path="res://assets/chain.png" id="4_ikx5p"]
+[ext_resource type="AudioStream" uid="uid://bnls8muhn8wko" path="res://assets/dog_sounds/Dog/Dog Bark 0.wav" id="3_sho5o"]
+[ext_resource type="Texture2D" uid="uid://crhivy1batcsn" path="res://assets/chain.png" id="4_ikx5p"]
+[ext_resource type="Texture2D" uid="uid://dn7qadp5twkgo" path="res://assets/pole.png" id="5_lv03n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dwbpu"]
 atlas = ExtResource("2_7kgce")
@@ -56,11 +57,16 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Curve2D" id="Curve2D_t5xn8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -41, 45, -17.3241, -2.12132, 17.3241, 2.12132, -20, 50, 0, 0, 0, 0, 26, 32)
+}
+point_count = 3
+
 [node name="Dog" type="Node2D" groups=["dogs"]]
 script = ExtResource("1_4dp7p")
 
 [node name="Line2D" type="Line2D" parent="."]
-visible = false
 texture_repeat = 2
 width = 7.0
 texture = ExtResource("4_ikx5p")
@@ -84,5 +90,13 @@ volume_db = -15.0
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Pole" type="Sprite2D" parent="."]
+position = Vector2(-39.5, 38.5)
+scale = Vector2(0.6, 0.588)
+texture = ExtResource("5_lv03n")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_t5xn8")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
