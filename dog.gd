@@ -59,11 +59,11 @@ func _on_timer_timeout() -> void:
 	
 func direction(angle):
 	if PI/4 < angle and angle <= 3*PI/4:
-		return "up"
+		return "down"
 	if -PI/4 < angle and angle <= PI/4:
 		return "right"
 	if -3*PI/4 < angle and angle <= -PI/4:
-		return "down"
+		return "up"
 	return "left"
 	
 
