@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cisbbu15jg4ln"]
+[gd_scene load_steps=3 format=3 uid="uid://cisbbu15jg4ln"]
+
+[ext_resource type="Texture2D" uid="uid://dueswqnwn08rr" path="res://assets/background1.png" id="1_rnmgk"]
 
 [sub_resource type="Theme" id="Theme_3xusf"]
 default_font_size = 50
@@ -22,5 +24,12 @@ grow_vertical = 2
 [node name="Text" type="Label" parent="CenterContainer"]
 layout_mode = 2
 theme = SubResource("Theme_3xusf")
-text = "Press any key"
+text = "Runaway Canines
+
+Press any key"
 horizontal_alignment = 1
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_rnmgk")
+centered = false
