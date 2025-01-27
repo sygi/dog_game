@@ -10,12 +10,16 @@ var barking_sounds = [
 	preload("res://assets/dog_sounds/Dog/Dog Bark 3.wav")
 ]
 
+var previous_direction = "up"
+
 func _ready() -> void:
 	if running:
-		# TODO: running animations
-		$AnimatedSprite2D.play("idle_" + breed)
+		previous_direction = direction(Vector2.ZERO.direction_to(position).angle())
+		$AnimatedSprite2D.play(previous_direction + "_" + breed)
 	else:
 		$AnimatedSprite2D.play("idle_" + breed)
+		$AnimatedSprite2D.frame = randi() % 2
+		$AnimatedSprite2D.pause()
 		for point in $Path2D.curve.get_baked_points():
 			$Line2D.add_point(point + $Path2D.position) 
 
@@ -52,8 +56,22 @@ func activate() -> void:
 
 func _on_timer_timeout() -> void:
 	bark()
+	
+func direction(angle):
+	if PI/4 < angle and angle <= 3*PI/4:
+		return "up"
+	if -PI/4 < angle and angle <= PI/4:
+		return "right"
+	if -3*PI/4 < angle and angle <= -PI/4:
+		return "down"
+	return "left"
+	
 
 func _process(delta: float) -> void:
 	if running:
+		var current_direction = direction(Vector2.ZERO.direction_to(position).angle())
+		if current_direction != previous_direction:
+			previous_direction = current_direction
+			$AnimatedSprite2D.play(current_direction + "_" + breed)
 		var player_offset = Vector2(40, 40)
 		$Line2D.points[-1] = -position + player_offset
