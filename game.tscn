@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game.gd" id="1_lwlps"]
 [ext_resource type="PackedScene" uid="uid://8efwgxdpe0vr" path="res://player.tscn" id="2_qnum4"]
-[ext_resource type="Texture2D" uid="uid://dueswqnwn08rr" path="res://assets/background1.png" id="3_33tft"]
+[ext_resource type="Texture2D" uid="uid://b6d27ygdfujlv" path="res://assets/background1.png" id="3_33tft"]
 [ext_resource type="PackedScene" uid="uid://bj8otl58obswd" path="res://house.tscn" id="4_wqubn"]
 [ext_resource type="Script" path="res://release_warning.gd" id="5_wuam6"]
 
@@ -99,5 +99,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_chuwi")
 horizontal_alignment = 1
+
+[node name="Spawnable" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spawnable"]
+position = Vector2(0, -2)
+polygon = PackedVector2Array(105, 505, 70, 232, 0, 219, -6, -34, 1478, -22, 1456, 660, 1285, 640, 1317, 303, 1141, 330, 1123, 157, 322, 166, 241, 395, 192, 427, 183, 474, 273, 541, 214, 609, 210, 671, 172, 669, 169, 606, 145, 606)
 
 [connection signal="timeout" from="ReleaseWarning/Timer" to="ReleaseWarning" method="_on_timer_timeout"]

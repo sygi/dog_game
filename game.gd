@@ -92,12 +92,19 @@ func fill_world_with_dogs():
 			randf_range(0, get_viewport().size.x - dog_size.x),
 			randf_range(0, get_viewport().size.y - dog_size.y)
 		)
+		while Geometry2D.is_point_in_polygon(preliminary_pos, $"Spawnable/CollisionPolygon2D".polygon):
+			preliminary_pos = Vector2(
+				randf_range(0, get_viewport().size.x - dog_size.x),
+				randf_range(0, get_viewport().size.y - dog_size.y)
+			)
+			
 		while min(preliminary_pos.distance_to($Player.position), preliminary_pos.distance_to($House.position)) < MIN_PLAYER_DIST:
 			preliminary_pos = Vector2(
 				randf_range(0, get_viewport().size.x - dog_size.x),
 				randf_range(0, get_viewport().size.y - dog_size.y)
 			)
 		dog.position = preliminary_pos
+		
 		$Dogs.add_child(dog)
 
 func _ready() -> void:
