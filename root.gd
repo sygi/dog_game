@@ -7,7 +7,7 @@ var title_scene = preload("res://title.tscn")
 
 func _on_exit_to_title(high_score):
 	self.high_score = high_score
-	remove_child($Root)
+	remove_child($Game)
 	var title_scene = title_scene.instantiate()
 	add_child(title_scene)
 
