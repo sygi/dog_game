@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game.gd" id="1_lwlps"]
 [ext_resource type="PackedScene" uid="uid://8efwgxdpe0vr" path="res://player.tscn" id="2_qnum4"]
-[ext_resource type="Texture2D" uid="uid://b6d27ygdfujlv" path="res://assets/background1.png" id="3_33tft"]
+[ext_resource type="Texture2D" uid="uid://dueswqnwn08rr" path="res://assets/background1.png" id="3_33tft"]
 [ext_resource type="PackedScene" uid="uid://bj8otl58obswd" path="res://house.tscn" id="4_wqubn"]
 [ext_resource type="Script" path="res://release_warning.gd" id="5_wuam6"]
 
